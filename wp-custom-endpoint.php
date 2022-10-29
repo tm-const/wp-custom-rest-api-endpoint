@@ -4,7 +4,7 @@
 // http://localhost:8888/wp-json/parent-theme/v1/latest-posts/5
 
 add_action('rest_api_init', function () {
-	register_rest_route( 'blockchain_mastermind/v1', 'latest-posts/(?P<category_id>\d+)' ,array(
+	register_rest_route( 'parent-theme/v1', 'latest-posts/(?P<category_id>\d+)' ,array(
 				  'methods'  => 'GET',
 				  'args' => array(),
 				  'callback' => 'get_latest_posts_by_category',
@@ -17,7 +17,7 @@ add_action('rest_api_init', function () {
 function get_latest_posts_by_category(WP_REST_Request $request) {
 
     $args = array(
-			'post_type' => 'market',
+			'post_type' => 'post-type',
             'numberposts' => 10,
             'category' => $request['category_id']
     );
